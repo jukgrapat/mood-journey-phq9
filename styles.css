@@ -156,8 +156,8 @@ h2 {
 
 .character {
   position: relative;
-  width: 164px;
-  height: 178px;
+  width: 184px;
+  height: 188px;
   animation: breathe 3.4s ease-in-out infinite;
   transition: filter 260ms ease, opacity 260ms ease, transform 260ms ease;
 }
@@ -172,39 +172,42 @@ h2 {
 
 .head {
   position: absolute;
-  top: 16px;
-  left: 48px;
-  width: 104px;
-  height: 108px;
-  border-radius: 50% 48% 52% 46%;
-  background: #fff9e8;
-  border: 4px solid var(--ink);
+  top: 6px;
+  left: 42px;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: #fffefa;
+  border: 6px solid var(--ink);
   z-index: 2;
 }
 
 .head::before {
   content: "";
   position: absolute;
-  left: -42px;
-  top: 43px;
-  width: 44px;
-  height: 28px;
-  background: #ffe2a7;
-  border: 4px solid var(--ink);
-  border-right: 0;
-  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  left: -82px;
+  top: 47px;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-top: 34px solid transparent;
+  border-right: 88px solid var(--ink);
+  border-bottom: 34px solid transparent;
+  border-left: 0;
+  clip-path: none;
 }
 
 .head::after {
   content: "";
   position: absolute;
-  left: 27px;
-  top: -11px;
-  width: 42px;
-  height: 20px;
-  border-top: 4px solid var(--ink);
-  border-radius: 50%;
-  transform: rotate(-8deg);
+  left: -66px;
+  top: 58px;
+  width: 0;
+  height: 0;
+  border-top: 23px solid transparent;
+  border-right: 64px solid #ffd15a;
+  border-bottom: 23px solid transparent;
+  border-left: 0;
 }
 
 .ear {
@@ -220,16 +223,16 @@ h2 {
 
 .eye {
   position: absolute;
-  top: 38px;
-  width: 24px;
-  height: 19px;
+  top: 48px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: #fff;
-  border: 4px solid var(--ink);
+  border: 6px solid var(--ink);
 }
 
 .eye.left {
-  left: 22px;
+  left: 24px;
 }
 
 .eye.right {
@@ -239,65 +242,67 @@ h2 {
 .eye.left::after {
   content: "";
   position: absolute;
-  left: 7px;
-  top: 5px;
-  width: 5px;
-  height: 5px;
+  left: 8px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--ink);
 }
 
 .mouth {
-  position: absolute;
-  left: 50%;
-  top: 67px;
-  width: 16px;
-  height: 8px;
-  border-bottom: 3px solid var(--ink);
-  border-radius: 0 0 20px 20px;
-  transform: translateX(-20%);
-  transition: border-radius 220ms ease, height 220ms ease, top 220ms ease, transform 220ms ease;
+  display: none;
 }
 
 .body {
   position: absolute;
-  left: 63px;
-  bottom: 17px;
-  width: 82px;
-  height: 76px;
+  left: 61px;
+  bottom: 2px;
+  width: 106px;
+  height: 80px;
   border: 0;
   border-radius: 0;
   background:
-    linear-gradient(var(--ink), var(--ink)) 33px 0 / 3px 52px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) 57px 8px / 3px 43px no-repeat;
+    linear-gradient(var(--ink), var(--ink)) 31px 0 / 6px 61px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 76px 0 / 6px 61px no-repeat;
 }
 
 .body::before,
 .body::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  width: 42px;
-  height: 26px;
-  border-bottom: 4px solid var(--ink);
-  border-radius: 50%;
+  bottom: -1px;
+  width: 54px;
+  height: 31px;
+  border: 0;
+  border-radius: 0;
 }
 
 .body::before {
-  left: 0;
-  transform: rotate(-28deg);
+  left: 4px;
+  background:
+    linear-gradient(151deg, transparent 0 45%, var(--ink) 46% 56%, transparent 57% 100%),
+    linear-gradient(27deg, transparent 0 45%, var(--ink) 46% 56%, transparent 57% 100%);
+  background-size: 34px 30px, 34px 30px;
+  background-position: 0 0, 20px 0;
+  background-repeat: no-repeat;
 }
 
 .body::after {
-  right: 0;
-  transform: rotate(18deg);
+  right: -1px;
+  background:
+    linear-gradient(151deg, transparent 0 45%, var(--ink) 46% 56%, transparent 57% 100%),
+    linear-gradient(27deg, transparent 0 45%, var(--ink) 46% 56%, transparent 57% 100%);
+  background-size: 34px 30px, 34px 30px;
+  background-position: 0 0, 20px 0;
+  background-repeat: no-repeat;
 }
 
 .shadow {
   position: absolute;
   left: 47px;
-  bottom: 2px;
-  width: 94px;
+  bottom: -1px;
+  width: 126px;
   height: 18px;
   border-radius: 50%;
   background: rgba(23, 32, 42, 0.16);
@@ -351,11 +356,7 @@ h2 {
 
 .q-sad .mouth,
 .result-urgent .mouth {
-  top: 58px;
-  height: 12px;
-  border-bottom: 0;
-  border-top: 3px solid var(--ink);
-  border-radius: 20px 20px 0 0;
+  display: none;
 }
 
 .q-sleep .prop-right {
@@ -382,8 +383,12 @@ h2 {
 
 .q-sleep .eye {
   height: 4px;
-  top: 29px;
+  top: 62px;
   border-radius: 999px;
+}
+
+.q-sleep .eye.left::after {
+  display: none;
 }
 
 .q-energy .prop-left,
@@ -564,7 +569,7 @@ h2 {
 }
 
 .result-calm .mouth {
-  width: 30px;
+  display: none;
 }
 
 .result-calm .prop-right,
