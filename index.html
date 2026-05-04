@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mood Journey เว็บแอปแบบสตอรี่สำหรับทำแบบประเมิน PHQ-9 และแชร์ผลลัพธ์ลง IG Story"
+    />
+    <title>Mood Journey PHQ-9</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="story-stage" aria-live="polite">
+        <div class="story-phone" id="storyCard">
+          <div class="progress-track" id="progressTrack" aria-hidden="true"></div>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow" id="screenEyebrow">Mood Journey</p>
+              <h1 id="screenTitle">เช็กใจก่อนลงสตอรี่</h1>
+            </div>
+            <button class="icon-button" id="resetButton" type="button" aria-label="เริ่มใหม่" title="เริ่มใหม่">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12a9 9 0 1 0 3-6.7" />
+                <path d="M3 3v6h6" />
+              </svg>
+            </button>
+          </header>
+
+          <div class="scene" id="scene">
+            <div class="sky-orbit" aria-hidden="true"></div>
+            <div class="character" id="character" aria-hidden="true">
+              <div class="head">
+                <span class="ear left"></span>
+                <span class="ear right"></span>
+                <span class="face">
+                  <span class="eye left"></span>
+                  <span class="eye right"></span>
+                  <span class="mouth"></span>
+                </span>
+              </div>
+              <div class="body"></div>
+              <div class="shadow"></div>
+            </div>
+          </div>
+
+          <article class="content-panel">
+            <p class="story-copy" id="storyCopy">
+              วันนี้มีเพื่อนตัวเล็กชื่อ “มูดี้” อยากชวนคุณเดินผ่าน 9 ฉากสั้น ๆ เพื่อดูแลใจตัวเองแบบนุ่มนวล
+            </p>
+
+            <div class="quiz-area" id="quizArea" hidden>
+              <fieldset>
+                <legend id="questionText"></legend>
+                <div class="choices" id="choices"></div>
+              </fieldset>
+            </div>
+
+            <div class="result-area" id="resultArea" hidden>
+              <p class="score" id="scoreText"></p>
+              <p class="result-title" id="resultTitle"></p>
+              <p class="result-copy" id="resultCopy"></p>
+              <div class="share-card-preview" id="sharePreview">
+                <p>Mood Journey</p>
+                <strong id="shareScore">PHQ-9: 0</strong>
+                <span id="shareLabel">พร้อมดูแลใจตัวเอง</span>
+              </div>
+            </div>
+          </article>
+
+          <footer class="actions">
+            <button class="secondary-button" id="backButton" type="button">ย้อนกลับ</button>
+            <button class="primary-button" id="nextButton" type="button">เริ่มเดินทาง</button>
+          </footer>
+
+          <p class="disclaimer" id="disclaimer">
+            แบบประเมินนี้ใช้เพื่อสะท้อนอารมณ์เบื้องต้น ไม่ใช่การวินิจฉัยทางการแพทย์
+          </p>
+        </div>
+
+        <aside class="side-panel">
+          <h2>สำหรับ IG Story</h2>
+          <p>
+            หน้าเว็บถูกออกแบบในสัดส่วน 9:16 เหมือนสตอรี่ มีผลลัพธ์แบบการ์ดและปุ่มบันทึกภาพเพื่อโพสต์ต่อได้ง่าย
+          </p>
+          <div class="tool-row">
+            <button class="utility-button" id="downloadButton" type="button" disabled>บันทึกการ์ดผลลัพธ์</button>
+            <button class="utility-button" id="copyButton" type="button" disabled>คัดลอกข้อความ</button>
+          </div>
+          <p class="help-note">
+            ถ้าคะแนนสูงหรือมีความคิดทำร้ายตัวเอง ควรติดต่อผู้เชี่ยวชาญ คนใกล้ตัว หรือสายด่วนสุขภาพจิต 1323 ในประเทศไทย
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
