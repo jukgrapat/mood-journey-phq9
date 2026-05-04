@@ -38,6 +38,7 @@ const resultBands = [
     max: 4,
     scene: "result-calm",
     title: "สัญญาณเบา ๆ",
+    label: "อาการน้อยมาก",
     copy: "คะแนนอยู่ในช่วงต่ำ ลองรักษาจังหวะพักผ่อน การกิน และคนที่ทำให้ใจรู้สึกปลอดภัยไว้ใกล้ ๆ",
   },
   {
@@ -45,6 +46,7 @@ const resultBands = [
     max: 9,
     scene: "result-care",
     title: "เริ่มต้องดูแลใจ",
+    label: "อาการน้อย",
     copy: "มีสัญญาณบางอย่างที่ควรรับฟัง ลองคุยกับคนไว้ใจและจัดพื้นที่พักให้ตัวเองมากขึ้น",
   },
   {
@@ -52,6 +54,7 @@ const resultBands = [
     max: 14,
     scene: "result-support",
     title: "ควรขอแรงสนับสนุน",
+    label: "อาการปานกลาง",
     copy: "คะแนนอยู่ในช่วงปานกลาง การคุยกับผู้เชี่ยวชาญหรือบริการให้คำปรึกษาอาจช่วยให้เบาขึ้น",
   },
   {
@@ -59,6 +62,7 @@ const resultBands = [
     max: 19,
     scene: "result-reach",
     title: "อย่าอยู่กับมันคนเดียว",
+    label: "อาการค่อนข้างรุนแรง",
     copy: "สัญญาณค่อนข้างมาก ควรติดต่อผู้เชี่ยวชาญ คนใกล้ตัว หรือหน่วยบริการสุขภาพจิตโดยเร็ว",
   },
   {
@@ -66,6 +70,7 @@ const resultBands = [
     max: 27,
     scene: "result-urgent",
     title: "ขอความช่วยเหลือทันที",
+    label: "อาการรุนแรง",
     copy: "คะแนนสูงมาก โปรดติดต่อผู้เชี่ยวชาญหรือคนที่ไว้ใจทันที หากไม่ปลอดภัยให้ติดต่อบริการฉุกเฉินในพื้นที่",
   },
 ];
@@ -105,6 +110,7 @@ const resultArea = document.querySelector("#resultArea");
 const scoreText = document.querySelector("#scoreText");
 const resultTitle = document.querySelector("#resultTitle");
 const resultCopy = document.querySelector("#resultCopy");
+const scoreScale = document.querySelector("#scoreScale");
 const shareScore = document.querySelector("#shareScore");
 const shareLabel = document.querySelector("#shareLabel");
 const backButton = document.querySelector("#backButton");
@@ -148,6 +154,22 @@ function getScore() {
 
 function getBand(score) {
   return resultBands.find((band) => score >= band.min && score <= band.max);
+}
+
+function renderScoreScale(score) {
+  scoreScale.innerHTML = "";
+  const heading = document.createElement("p");
+  heading.className = "scale-heading";
+  heading.textContent = "ช่วงคะแนน PHQ-9";
+  scoreScale.appendChild(heading);
+
+  resultBands.forEach((band) => {
+    const row = document.createElement("div");
+    row.className = "scale-row";
+    if (score >= band.min && score <= band.max) row.classList.add("active");
+    row.innerHTML = `<span>${band.min}-${band.max}</span><strong>${band.label}</strong>`;
+    scoreScale.appendChild(row);
+  });
 }
 
 function renderIntro() {
@@ -206,6 +228,7 @@ function renderResult() {
   scoreText.textContent = `คะแนน PHQ-9: ${score} / 27`;
   resultTitle.textContent = band.title;
   resultCopy.textContent = band.copy;
+  renderScoreScale(score);
   shareScore.textContent = `PHQ-9: ${score} / 27`;
   shareLabel.textContent = band.title;
   nextButton.textContent = "เริ่มใหม่";

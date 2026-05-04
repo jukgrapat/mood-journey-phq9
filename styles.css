@@ -772,7 +772,7 @@ legend {
 
 .result-area {
   display: grid;
-  gap: 8px;
+  gap: 7px;
 }
 
 .score {
@@ -784,13 +784,55 @@ legend {
 
 .result-title {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.22rem;
   font-weight: 800;
 }
 
+.score-scale {
+  display: grid;
+  gap: 4px;
+}
+
+.scale-heading {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.scale-row {
+  min-height: 25px;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.58);
+  padding: 3px 8px;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.scale-row span {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.scale-row strong {
+  font-weight: 700;
+}
+
+.scale-row.active {
+  border-color: var(--ink);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 5px 14px rgba(23, 32, 42, 0.08);
+}
+
 .share-card-preview {
-  margin-top: 8px;
-  min-height: 96px;
+  margin-top: 4px;
+  min-height: 86px;
   border-radius: 8px;
   background: linear-gradient(135deg, var(--sun), var(--coral));
   color: #251a16;
