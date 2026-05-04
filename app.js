@@ -36,34 +36,60 @@ const resultBands = [
   {
     min: 0,
     max: 4,
+    scene: "result-calm",
     title: "สัญญาณเบา ๆ",
     copy: "คะแนนอยู่ในช่วงต่ำ ลองรักษาจังหวะพักผ่อน การกิน และคนที่ทำให้ใจรู้สึกปลอดภัยไว้ใกล้ ๆ",
   },
   {
     min: 5,
     max: 9,
+    scene: "result-care",
     title: "เริ่มต้องดูแลใจ",
     copy: "มีสัญญาณบางอย่างที่ควรรับฟัง ลองคุยกับคนไว้ใจและจัดพื้นที่พักให้ตัวเองมากขึ้น",
   },
   {
     min: 10,
     max: 14,
+    scene: "result-support",
     title: "ควรขอแรงสนับสนุน",
     copy: "คะแนนอยู่ในช่วงปานกลาง การคุยกับผู้เชี่ยวชาญหรือบริการให้คำปรึกษาอาจช่วยให้เบาขึ้น",
   },
   {
     min: 15,
     max: 19,
+    scene: "result-reach",
     title: "อย่าอยู่กับมันคนเดียว",
     copy: "สัญญาณค่อนข้างมาก ควรติดต่อผู้เชี่ยวชาญ คนใกล้ตัว หรือหน่วยบริการสุขภาพจิตโดยเร็ว",
   },
   {
     min: 20,
     max: 27,
+    scene: "result-urgent",
     title: "ขอความช่วยเหลือทันที",
     copy: "คะแนนสูงมาก โปรดติดต่อผู้เชี่ยวชาญหรือคนที่ไว้ใจทันที หากไม่ปลอดภัยให้ติดต่อบริการฉุกเฉินในพื้นที่",
   },
 ];
+
+const sceneClasses = [
+  "intro-welcome",
+  "intro-honest",
+  "q-interest",
+  "q-sad",
+  "q-sleep",
+  "q-energy",
+  "q-appetite",
+  "q-self",
+  "q-focus",
+  "q-motion",
+  "q-safety",
+  "result-calm",
+  "result-care",
+  "result-support",
+  "result-reach",
+  "result-urgent",
+];
+
+const questionScenes = sceneClasses.slice(2, 11);
 
 let step = 0;
 const answers = Array(questions.length).fill(null);
@@ -88,8 +114,24 @@ const downloadButton = document.querySelector("#downloadButton");
 const copyButton = document.querySelector("#copyButton");
 const storyCard = document.querySelector("#storyCard");
 const character = document.querySelector("#character");
+const scene = document.querySelector("#scene");
+const sharePreview = document.querySelector("#sharePreview");
 
 const totalSteps = introScreens.length + questions.length + 1;
+
+function applyScene(sceneName, score = 0) {
+  const mood = Math.min(1, score / 27);
+  storyCard.classList.remove(...sceneClasses);
+  scene.classList.remove(...sceneClasses);
+  character.classList.remove(...sceneClasses);
+  sharePreview.classList.remove(...sceneClasses);
+  storyCard.classList.add(sceneName);
+  scene.classList.add(sceneName);
+  character.classList.add(sceneName);
+  sharePreview.classList.add(sceneName);
+  character.style.filter = `saturate(${1 - mood * 0.28})`;
+  character.style.opacity = `${1 - mood * 0.08}`;
+}
 
 function renderProgress() {
   progressTrack.innerHTML = "";
@@ -108,12 +150,6 @@ function getBand(score) {
   return resultBands.find((band) => score >= band.min && score <= band.max);
 }
 
-function setCharacterMood(score) {
-  const mood = Math.min(1, score / 27);
-  character.style.filter = `saturate(${1 - mood * 0.35})`;
-  character.style.opacity = `${1 - mood * 0.08}`;
-}
-
 function renderIntro() {
   const current = introScreens[step];
   screenEyebrow.textContent = current.eyebrow;
@@ -126,7 +162,7 @@ function renderIntro() {
   nextButton.disabled = false;
   downloadButton.disabled = true;
   copyButton.disabled = true;
-  setCharacterMood(0);
+  applyScene(step === 0 ? "intro-welcome" : "intro-honest", 0);
 }
 
 function renderQuestion() {
@@ -156,7 +192,7 @@ function renderQuestion() {
   nextButton.disabled = answers[questionIndex] === null;
   downloadButton.disabled = true;
   copyButton.disabled = true;
-  setCharacterMood(getScore());
+  applyScene(questionScenes[questionIndex], getScore());
 }
 
 function renderResult() {
@@ -176,7 +212,7 @@ function renderResult() {
   nextButton.disabled = false;
   downloadButton.disabled = false;
   copyButton.disabled = false;
-  setCharacterMood(score);
+  applyScene(band.scene, score);
 }
 
 function render() {
