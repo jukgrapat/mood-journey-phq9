@@ -111,15 +111,12 @@ const scoreText = document.querySelector("#scoreText");
 const resultTitle = document.querySelector("#resultTitle");
 const resultCopy = document.querySelector("#resultCopy");
 const scoreScale = document.querySelector("#scoreScale");
-const shareScore = document.querySelector("#shareScore");
-const shareLabel = document.querySelector("#shareLabel");
 const backButton = document.querySelector("#backButton");
 const nextButton = document.querySelector("#nextButton");
 const resetButton = document.querySelector("#resetButton");
 const storyCard = document.querySelector("#storyCard");
 const character = document.querySelector("#character");
 const scene = document.querySelector("#scene");
-const sharePreview = document.querySelector("#sharePreview");
 
 const totalSteps = introScreens.length + questions.length + 1;
 
@@ -128,11 +125,9 @@ function applyScene(sceneName, score = 0) {
   storyCard.classList.remove(...sceneClasses);
   scene.classList.remove(...sceneClasses);
   character.classList.remove(...sceneClasses);
-  sharePreview.classList.remove(...sceneClasses);
   storyCard.classList.add(sceneName);
   scene.classList.add(sceneName);
   character.classList.add(sceneName);
-  sharePreview.classList.add(sceneName);
   character.style.filter = `saturate(${1 - mood * 0.28})`;
   character.style.opacity = `${1 - mood * 0.08}`;
 }
@@ -223,8 +218,6 @@ function renderResult() {
   resultTitle.textContent = band.title;
   resultCopy.textContent = band.copy;
   renderScoreScale(score);
-  shareScore.textContent = `PHQ-9: ${score} / 27`;
-  shareLabel.textContent = band.title;
   nextButton.textContent = "เริ่มใหม่";
   nextButton.disabled = false;
   applyScene(band.scene, score);
