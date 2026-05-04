@@ -264,7 +264,7 @@ h2 {
   position: absolute;
   top: 132px;
   width: 6px;
-  height: 24px;
+  height: 34px;
   border-radius: 999px;
   background: var(--ink);
   z-index: 1;
@@ -283,21 +283,21 @@ h2 {
   content: "";
   position: absolute;
   bottom: 0;
-  width: 10px;
+  width: 18px;
   height: 5px;
   border-radius: 999px;
   background: var(--ink);
 }
 
 .leg::before {
-  left: -5px;
-  transform: rotate(-18deg);
+  left: -13px;
+  transform: rotate(-20deg);
   transform-origin: right center;
 }
 
 .leg::after {
   left: 4px;
-  transform: rotate(18deg);
+  transform: rotate(20deg);
   transform-origin: left center;
 }
 
