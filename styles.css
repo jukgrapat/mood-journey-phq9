@@ -173,9 +173,9 @@ h2 {
 .beak {
   position: absolute;
   left: 5px;
-  top: 61px;
-  width: 84px;
-  height: 60px;
+  top: 47px;
+  width: 78px;
+  height: 56px;
   background: var(--ink);
   clip-path: polygon(0 50%, 100% 0, 100% 100%);
   z-index: 1;
@@ -185,9 +185,9 @@ h2 {
   content: "";
   position: absolute;
   left: 12px;
-  top: 9px;
-  width: 60px;
-  height: 42px;
+  top: 8px;
+  width: 56px;
+  height: 40px;
   background: #ffd15a;
   clip-path: polygon(0 50%, 100% 0, 100% 100%);
 }
@@ -264,7 +264,7 @@ h2 {
   position: absolute;
   top: 132px;
   width: 6px;
-  height: 62px;
+  height: 46px;
   border-radius: 999px;
   background: var(--ink);
   z-index: 1;
@@ -283,21 +283,21 @@ h2 {
   content: "";
   position: absolute;
   bottom: -7px;
-  width: 43px;
+  width: 27px;
   height: 6px;
   border-radius: 999px;
   background: var(--ink);
 }
 
 .leg::before {
-  left: -39px;
-  transform: rotate(-24deg);
+  left: -23px;
+  transform: rotate(-22deg);
   transform-origin: right center;
 }
 
 .leg::after {
   left: 2px;
-  transform: rotate(24deg);
+  transform: rotate(22deg);
   transform-origin: left center;
 }
 
