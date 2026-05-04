@@ -170,6 +170,28 @@ h2 {
   transition: opacity 220ms ease, transform 220ms ease;
 }
 
+.beak {
+  position: absolute;
+  left: 5px;
+  top: 61px;
+  width: 84px;
+  height: 60px;
+  background: var(--ink);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  z-index: 1;
+}
+
+.beak::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 9px;
+  width: 60px;
+  height: 42px;
+  background: #ffd15a;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
 .head {
   position: absolute;
   top: 6px;
@@ -183,31 +205,11 @@ h2 {
 }
 
 .head::before {
-  content: "";
-  position: absolute;
-  left: -82px;
-  top: 47px;
-  width: 0;
-  height: 0;
-  background: transparent;
-  border-top: 34px solid transparent;
-  border-right: 88px solid var(--ink);
-  border-bottom: 34px solid transparent;
-  border-left: 0;
-  clip-path: none;
+  display: none;
 }
 
 .head::after {
-  content: "";
-  position: absolute;
-  left: -66px;
-  top: 58px;
-  width: 0;
-  height: 0;
-  border-top: 23px solid transparent;
-  border-right: 64px solid #ffd15a;
-  border-bottom: 23px solid transparent;
-  border-left: 0;
+  display: none;
 }
 
 .ear {
@@ -255,47 +257,48 @@ h2 {
 }
 
 .body {
-  position: absolute;
-  left: 61px;
-  bottom: 2px;
-  width: 106px;
-  height: 80px;
-  border: 0;
-  border-radius: 0;
-  background:
-    linear-gradient(var(--ink), var(--ink)) 31px 0 / 6px 61px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) 76px 0 / 6px 61px no-repeat;
+  display: none;
 }
 
-.body::before,
-.body::after {
+.leg {
+  position: absolute;
+  top: 132px;
+  width: 6px;
+  height: 62px;
+  border-radius: 999px;
+  background: var(--ink);
+  z-index: 1;
+}
+
+.leg-left {
+  left: 86px;
+}
+
+.leg-right {
+  left: 130px;
+}
+
+.leg::before,
+.leg::after {
   content: "";
   position: absolute;
-  bottom: -1px;
-  width: 54px;
-  height: 31px;
-  border: 0;
-  border-radius: 0;
+  bottom: -7px;
+  width: 43px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ink);
 }
 
-.body::before {
-  left: 4px;
-  background:
-    linear-gradient(151deg, transparent 0 45%, var(--ink) 46% 56%, transparent 57% 100%),
-    linear-gradient(27deg, transparent 0 45%, var(--ink) 46% 56%, transparent 57% 100%);
-  background-size: 34px 30px, 34px 30px;
-  background-position: 0 0, 20px 0;
-  background-repeat: no-repeat;
+.leg::before {
+  left: -39px;
+  transform: rotate(-24deg);
+  transform-origin: right center;
 }
 
-.body::after {
-  right: -1px;
-  background:
-    linear-gradient(151deg, transparent 0 45%, var(--ink) 46% 56%, transparent 57% 100%),
-    linear-gradient(27deg, transparent 0 45%, var(--ink) 46% 56%, transparent 57% 100%);
-  background-size: 34px 30px, 34px 30px;
-  background-position: 0 0, 20px 0;
-  background-repeat: no-repeat;
+.leg::after {
+  left: 2px;
+  transform: rotate(24deg);
+  transform-origin: left center;
 }
 
 .shadow {
