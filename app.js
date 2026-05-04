@@ -1,9 +1,9 @@
 const introScreens = [
   {
-    eyebrow: "Mood Journey",
+    eyebrow: "ลูกเจี๊ยบคุง",
     title: "เช็กใจก่อนลงสตอรี่",
     copy:
-      "วันนี้มีเพื่อนตัวเล็กชื่อ “มูดี้” อยากชวนคุณเดินผ่าน 9 ฉากสั้น ๆ เพื่อดูแลใจตัวเองแบบนุ่มนวล",
+      "วันนี้มีเพื่อนตัวเล็กชื่อ “ลูกเจี๊ยบคุง” อยากชวนคุณเดินผ่าน 9 ฉากสั้น ๆ เพื่อดูแลใจตัวเองแบบนุ่มนวล",
   },
   {
     eyebrow: "ช่วง 2 สัปดาห์ที่ผ่านมา",
@@ -266,7 +266,7 @@ downloadButton.addEventListener("click", async () => {
 copyButton.addEventListener("click", async () => {
   const score = getScore();
   const band = getBand(score);
-  const text = `Mood Journey PHQ-9: ${score}/27 - ${band.title}`;
+  const text = `ลูกเจี๊ยบคุง PHQ-9: ${score}/27 - ${band.title}`;
   await navigator.clipboard.writeText(text);
   copyButton.textContent = "คัดลอกแล้ว";
   setTimeout(() => {
