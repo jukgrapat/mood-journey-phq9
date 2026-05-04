@@ -116,8 +116,6 @@ const shareLabel = document.querySelector("#shareLabel");
 const backButton = document.querySelector("#backButton");
 const nextButton = document.querySelector("#nextButton");
 const resetButton = document.querySelector("#resetButton");
-const downloadButton = document.querySelector("#downloadButton");
-const copyButton = document.querySelector("#copyButton");
 const storyCard = document.querySelector("#storyCard");
 const character = document.querySelector("#character");
 const scene = document.querySelector("#scene");
@@ -182,8 +180,6 @@ function renderIntro() {
   resultArea.hidden = true;
   nextButton.textContent = step === 0 ? "เริ่มเดินทาง" : "ไปข้อแรก";
   nextButton.disabled = false;
-  downloadButton.disabled = true;
-  copyButton.disabled = true;
   applyScene(step === 0 ? "intro-welcome" : "intro-honest", 0);
 }
 
@@ -212,8 +208,6 @@ function renderQuestion() {
 
   nextButton.textContent = questionIndex === questions.length - 1 ? "ดูผลลัพธ์" : "ถัดไป";
   nextButton.disabled = answers[questionIndex] === null;
-  downloadButton.disabled = true;
-  copyButton.disabled = true;
   applyScene(questionScenes[questionIndex], getScore());
 }
 
@@ -233,8 +227,6 @@ function renderResult() {
   shareLabel.textContent = band.title;
   nextButton.textContent = "เริ่มใหม่";
   nextButton.disabled = false;
-  downloadButton.disabled = false;
-  copyButton.disabled = false;
   applyScene(band.scene, score);
 }
 
@@ -273,28 +265,5 @@ nextButton.addEventListener("click", () => {
 });
 
 resetButton.addEventListener("click", reset);
-
-downloadButton.addEventListener("click", async () => {
-  if (!window.html2canvas) return;
-  const canvas = await window.html2canvas(storyCard, {
-    backgroundColor: null,
-    scale: 2,
-  });
-  const link = document.createElement("a");
-  link.download = "mood-journey-phq9-story.png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
-});
-
-copyButton.addEventListener("click", async () => {
-  const score = getScore();
-  const band = getBand(score);
-  const text = `ลูกเจี๊ยบคุง PHQ-9: ${score}/27 - ${band.title}`;
-  await navigator.clipboard.writeText(text);
-  copyButton.textContent = "คัดลอกแล้ว";
-  setTimeout(() => {
-    copyButton.textContent = "คัดลอกข้อความ";
-  }, 1600);
-});
 
 render();
